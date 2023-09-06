@@ -74,6 +74,7 @@ void showErrorScreen(BuildContext context, dynamic exception) {
                     // Zeige Fehlerbildschirm basierend auf der Exception an
                     showErrorScreen(context, e);
                   }
+                  
                 },
                 child: const Text('Exception Anzeigen'),
               ),
