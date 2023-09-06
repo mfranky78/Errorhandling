@@ -41,7 +41,7 @@ class ExceptionDemo extends StatelessWidget {
 void showErrorScreen(BuildContext context, dynamic exception) {
   String errorMessage;
   if (exception is CustomException) {
-    errorMessage = "Benutzerdefinierte Exception behandelt: ${exception.message}";
+    errorMessage = "Benutzerdefinierte Ausnahme wurde behandelt: ${exception.message}";
   } else {
     errorMessage = "Eine Ausnahme wurde behandelt: $exception";
   }
@@ -53,6 +53,9 @@ void showErrorScreen(BuildContext context, dynamic exception) {
   );
 }
 
+ void cleanup() {
+    debugPrint("Es wurde aufgeräumt");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +76,10 @@ void showErrorScreen(BuildContext context, dynamic exception) {
                   } catch (e) {
                     // Zeige Fehlerbildschirm basierend auf der Exception an
                     showErrorScreen(context, e);
+                  }finally {
+                  // Aufräumfunktion im Finally-Block
+                  cleanup();
                   }
-                  
                 },
                 child: const Text('Exception Anzeigen'),
               ),
